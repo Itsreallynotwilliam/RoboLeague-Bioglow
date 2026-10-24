@@ -1,0 +1,51 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor,ColorDistanceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+
+hub = PrimeHub()                                              #setting the hub to PrimeHub
+
+left_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)        #Left Motor is A
+right_motor = Motor(Port.D)                                   #Right Motor is D
+right_attach_motor = Motor(Port.F)
+left_attach_motor = Motor(Port.B)
+
+robot = DriveBase(                                            #Setting robot parameters
+    left_motor,
+    right_motor,
+    wheel_diameter = 56,
+    axle_track = 112
+)
+
+#setting speed for robot
+robot.settings(
+    straight_speed = 400,
+    straight_acceleration=750,
+    turn_acceleration=150,
+    turn_rate=750,
+)
+
+
+
+robot.straight(320)
+robot.turn(40)
+robot.straight(500)
+robot.turn(50)
+robot.straight(110)
+robot.turn(-93)
+right_attach_motor.run_angle(150,-180)
+# robot.turn(4)
+robot.straight(50)
+right_attach_motor.run_angle(150,90)
+robot.straight(-90)
+
+
+# ------ Root mission -------
+
+# robot.straight(500)
+# right_attach_motor.run_angle(150, 55)
+# robot.straight(-20)
+# right_attach_motor.run_angle(150, 55)
+# robot.straight(30)
